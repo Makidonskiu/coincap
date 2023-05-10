@@ -1,0 +1,62 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 20px auto 20px;
+}
+
+.header__popular-cryptocurency{}
+
+.header__sub-header{
+    margin-bottom: 10px;
+    border-bottom: 2px solid #c8c8c8;
+    width: 210px;
+}
+
+.header__cryptocurency{
+    display: flex;
+}
+
+.header__crypto{
+    margin-right: 45px;
+}
+
+.header__crypto h3{
+
+}
+
+/* ----------------------------------- */
+
+.header__cart{
+    display: flex;
+    align-items: center;
+}
+
+.header__img-cart{
+    margin-right: 20px;
+}
+
+.header__cart-price{}
+
+.header__sub-header-cart-price{}
+
+
+@media (max-width: 767px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 20px;
+        margin-top: 20px;
+    }
+    .header__crypto{
+        margin: auto;
+        padding: 0 15px;
+    }
+    .header__img-cart{
+        margin-right: 20px;
+    }
+    .header__popular-cryptocurency{
+        margin-bottom: 20px;
+    }
+  }

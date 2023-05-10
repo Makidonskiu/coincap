@@ -1,0 +1,54 @@
+.crypto-table{
+    max-width: 1280px;
+    margin: 0px auto;
+}
+
+.crypto-table__table{
+    margin-bottom: 20px;
+}
+
+.crypto-table__plus{
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.crypto-table__plus:hover{
+    border: 1px solid #000;
+}
+
+.crypto-table__pagination{
+    display: flex;
+    max-width: 500px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.crypto-table__pagination-button{
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.crypto-table__pagination-button:hover{
+    background-color: #9a9a9a;
+}
+
+.disable{
+    background-color: #F0F0F0;
+}
+
+.disable:hover{
+    background-color: #F0F0F0;
+}
+
+.active{
+    background-color: #EC0C91;
+}
+
+.center{
+    text-align: center;
+}
+
