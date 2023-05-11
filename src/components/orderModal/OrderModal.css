@@ -1,0 +1,46 @@
+.order-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+}
+
+.order-modal__header{
+    color:black;
+    font-size: 22px;
+}
+
+.order-modal__header span{
+    font-weight: 700;
+    color:rgb(176, 0, 176)
+}
+
+.order-modal__submit{
+    width: 220px;
+    margin: 40px 0px 0px 0px;
+    text-align: center;
+}
+
+.order-modal__submit-header{
+    margin-bottom: 20px;
+}
+
+.order-modal__submit-input{
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+}
+
+.order-modal__submit-button{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.order-modal__submit-button:hover{
+    background-color: rgb(138, 138, 138);
+    color: aliceblue;
+}

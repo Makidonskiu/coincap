@@ -13,14 +13,12 @@ export function usePagination(data, itemsPerPage) {
     }
   }, [data, itemsPerPage]);
 
-  function goToNextPage(setActive) {
+  function goToNextPage() {
     setCurrentPage((page) => page + 1);
-    setActive((page) => page + 1);
   }
 
-  function goToPreviousPage(setActive) {
+  function goToPreviousPage() {
     setCurrentPage((page) => page - 1);
-    setActive((page) => page - 1);
   }
 
   function goToPage(page) {

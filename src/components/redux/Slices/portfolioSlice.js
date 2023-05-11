@@ -16,14 +16,32 @@ export const fetchPortfolioSliceId = createAsyncThunk(
 const portfolioSlice = createSlice({
     name: 'portfolio',
     initialState: {
-        list: [],
+        targetCrypto: null,
+        listBriefcase:[],
         id: 'bitcoin',
         status: null,
         error: null,
     },
     reducers: {
-        currentId(state, action){
+        currentId:(state, action) => {
             state.id = action.payload
+        },
+        listBriefcaseAdd:(state, action) => {
+            const { id, quantity } = action.payload;
+            const coinIndex = state.listBriefcase.findIndex((coin) => coin.id === id);
+
+            if (coinIndex !== -1) {
+                state.listBriefcase[coinIndex].quantity += quantity;
+            } else {
+                state.listBriefcase.push(action.payload);
+            }
+        },
+        addTargetCrypto:(state, action) => {
+            state.targetCrypto = action.payload
+        },
+        deleteListBriefcaseTarget: (state, {payload}) => {
+            const fixList = state.listBriefcase.filter(item => item.id !== payload);
+            state.listBriefcase = fixList
         }
     }, 
     extraReducers:(build) => {
@@ -36,7 +54,7 @@ const portfolioSlice = createSlice({
         .addCase(fetchPortfolioSliceId.fulfilled, (state, action) => {
             state.status = 'resolved';
             // state.error = action.payload;
-            state.list = action.payload;
+            state.targetCrypto = action.payload;
         })
 
         .addCase(fetchPortfolioSliceId.rejected, (state, {payload}) => {
@@ -46,6 +64,6 @@ const portfolioSlice = createSlice({
     }
 });
 
-export const {currentId} = portfolioSlice.actions;
+export const {currentId, listBriefcaseAdd, addTargetCrypto, deleteListBriefcaseTarget} = portfolioSlice.actions;
 
 export default portfolioSlice.reducer;

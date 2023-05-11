@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import './CryptoTable.css';
 import { formatNumber } from '../../formatNumber/formatNumber';
 import { usePagination } from '../paginationHoc/usePagination';
 import plus from '../../image/plus.svg';
 
 import { Table } from 'antd';
-import { currentId } from '../redux/Slices/portfolioSlice';
 import { useNavigate } from 'react-router-dom';
+import { OrderModal } from '../orderModal/OrderModal';
 
 
 export const CryptoTable = () => {
-  const navigate = useNavigate()
-  const [active, setActive] = useState(0);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currencies = useSelector((state) => state.cryptocurrencies.list);
+  const [openOrder, setOpenOrder] = React.useState(false);
+
 
 
   const currentIdStorage = (i) => localStorage.setItem('idStorage', JSON.stringify(i))
@@ -25,12 +25,12 @@ export const CryptoTable = () => {
   
 
   const handleClickAdd = (id) => {
-    dispatch(currentId(id))
+    setOpenOrder(true)
+    currentIdStorage(id)
   }
   
   const handleClickCurrenciesInformation = (i) => {
     currentIdStorage(i)
-    // dispatch(currentId(i))
     navigate(`/crypto`)    
   }
 
@@ -88,19 +88,18 @@ export const CryptoTable = () => {
 
   const handleClickPagination = (id) => {
     goToPage(id + 1);
-    setActive(id);
   };
 
-  // React.useEffect(()=>{
 
-  // }, [dispatch, ])
 
-  const keyCurrentItems = currentItems.map(item => ({...item, key: item.id}))
   return (
     <div className="crypto-table">
       <div className="crypto-table__table">
         {currentItems.length > 0 && (
-          <Table dataSource={keyCurrentItems} columns={columns} pagination={false} />
+          <div>
+            <Table rowKey="id" dataSource={currentItems} columns={columns} pagination={false} />
+            <OrderModal openOrder={openOrder} setOpenOrder={setOpenOrder} /> 
+          </div>
         )}
       </div>
       <div className="crypto-table__pagination">
@@ -110,14 +109,14 @@ export const CryptoTable = () => {
               ? 'crypto-table__pagination-button disable'
               : 'crypto-table__pagination-button'
           }
-          onClick={() => goToPreviousPage(setActive)}
+          onClick={ goToPreviousPage  }
           disabled={currentPage === 1}>
           Previous
         </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             className={
-              active === index
+              (currentPage - 1) === index
                 ? 'crypto-table__pagination-button active'
                 : 'crypto-table__pagination-button'
             }
@@ -132,7 +131,7 @@ export const CryptoTable = () => {
               ? 'crypto-table__pagination-button disable'
               : 'crypto-table__pagination-button'
           }
-          onClick={() => goToNextPage(setActive)}
+          onClick={goToNextPage}
           disabled={currentPage === totalPages}>
           Next
         </button>

@@ -30,6 +30,7 @@
 .header__cart{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .header__img-cart{
