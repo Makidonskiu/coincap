@@ -1,13 +1,39 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+//Redux-persist
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+//Slice
 import cryptocurrenciesReducer from '../Slices/cryptocurrenciesSlice';
 import portfolioReducer from '../Slices/portfolioSlice';
 
+export const rootReducer = combineReducers({
+  cryptocurrencies: cryptocurrenciesReducer,
+  portfolio: portfolioReducer,
+});
 
-export const rootReducer = {
-    cryptocurrencies: cryptocurrenciesReducer,
-    portfolio: portfolioReducer,
-  };
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-    reducer: rootReducer,
-})
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+export const persistor = persistStore(store);

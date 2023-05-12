@@ -1,13 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { formatNumber } from '../../formatNumber/formatNumber';
-import { usePagination } from '../paginationHoc/usePagination';
-import plus from '../../image/plus.svg';
-
-import { Table } from 'antd';
 import { useNavigate } from 'react-router-dom';
+//Antd
+import { Table } from 'antd';
+//Redux
+import { useSelector } from 'react-redux';
+//JS
+import { formatNumber } from '../../formatNumber/formatNumber';
+//Components
+import { usePagination } from '../paginationHoc/usePagination';
 import { OrderModal } from '../orderModal/OrderModal';
-
+//Image
+import plus from '../../image/plus.svg';
+//Css
 import './CryptoTable.css';
 
 export const CryptoTable = () => {
@@ -79,7 +83,6 @@ export const CryptoTable = () => {
       render: ({id}) => <img onClick={()=>handleClickAdd(id)} className="crypto-table__plus" src={plus} alt="add" />,
     },
   ];
-  
 
   const handleClickPagination = (id) => {
     goToPage(id + 1);

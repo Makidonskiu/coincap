@@ -33,14 +33,3 @@
     padding: 5px 15px;
     margin-bottom: 20px;
 }
-
-.order-modal__submit-button{
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-.order-modal__submit-button:hover{
-    background-color: rgb(138, 138, 138);
-    color: aliceblue;
-}

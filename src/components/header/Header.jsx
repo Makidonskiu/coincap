@@ -1,18 +1,27 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom';
-import  briefcase  from "../../image/briefcase.svg"
-
-import './Header.css'
-import { useSelector } from 'react-redux'
+//Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { copiedList } from '../redux/Slices/portfolioSlice'
+//Components
 import { BriefcaseModal } from '../briefcaseModal/BriefcaseModal'
+//image
+import  briefcase  from "../../image/briefcase.svg"
+//Css
+import './Header.css'
 
 export const Header = () => {
+  const dispatch = useDispatch()
   const cryptocurency = useSelector(state => state.cryptocurrencies.list)
   const listBriefcase = useSelector(state => state.portfolio.listBriefcase)
   const [openBriefcase, setOpenBriefcase] = React.useState(false);
   const price = listBriefcase.reduce((acc, item) => acc + +item.priceUsd, 0);
   const quantity = listBriefcase.reduce((acc, item) => acc + +item.quantity, 0);
   const sumCrypto = price * quantity
+
+  const handleClickOpenBriefcase = () => {
+    dispatch(copiedList())
+    setOpenBriefcase(true)
+  }
 
   const threePopularcryptocurency = cryptocurency.filter(item => item.rank < 4)
   return (
@@ -28,7 +37,7 @@ export const Header = () => {
                     ))}
                 </div>
             </div>
-            <div onClick={()=>setOpenBriefcase(true)} className="header__cart">
+            <div onClick={handleClickOpenBriefcase} className="header__cart">
                 <img className="header__img-cart" src={briefcase} alt="briefcase" />
                 <div className="header__cart-price">
                     <p className="header__sub-header-cart-price">Итого:</p>

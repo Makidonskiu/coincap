@@ -41,6 +41,6 @@ const cryptocurrenciesSlice = createSlice({
     }
 });
 
-// export const {} = cryptocurrenciesSlice.actions;
+export const {} = cryptocurrenciesSlice.actions;
 
 export default cryptocurrenciesSlice.reducer;

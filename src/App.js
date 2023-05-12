@@ -1,15 +1,14 @@
-// React
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+//Redux
 import { useDispatch } from 'react-redux';
+import { fetchCurrencies } from './components/redux/Slices/cryptocurrenciesSlice';
 // Components
-import { Header } from './components/header/Header';
+import { Layout } from './components/layout/Layout';
 import { CryptoTable } from './components/cryptoTable/CryptoTable';
 import { CryptoDetails } from './components/cryptoDetails/CryptoDetails';
-import { fetchCurrencies } from './components/redux/Slices/cryptocurrenciesSlice';
 // Css
 import './App.css';
-import { Layout } from './components/layout/Layout';
 
 function App() {
   const dispatch = useDispatch();

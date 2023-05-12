@@ -1,13 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+//Antd
+import { message } from 'antd'
+import { ArrowLeftOutlined } from '@ant-design/icons';
+//Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPortfolioSliceId, listBriefcaseAdd } from '../redux/Slices/portfolioSlice'
-
-import { ArrowLeftOutlined } from '@ant-design/icons';
-
-import "./CryptoDetails.css";
-import { Link } from 'react-router-dom';
+//JS
 import { formatNumber } from '../../formatNumber/formatNumber';
-import { HistoricalDataChart } from '../historicalDataChart/HistoricalDataChart';
+//Css
+import "./CryptoDetails.css";
+
+
 
 export const CryptoDetails = () => {
   const dispatch = useDispatch()
@@ -16,15 +20,32 @@ export const CryptoDetails = () => {
   const [cryptoOrder, setCryptoOrder] = React.useState('');
   const idStorage = JSON.parse(localStorage.getItem('idStorage'));
 
+  const [messageApi, contextHolder] = message.useMessage();
+
+    const info = () => {
+      messageApi.info('Успешно куплено!');
+    };
+
+
   const clickByCrypto = () => {
     const res = parseFloat(cryptoOrder)
     
     if(!isNaN(res)){
       dispatch(listBriefcaseAdd({...currentCrypto, quantity: +res}))
       setCryptoOrder('')
+      info()
+    }else{
+      alert('Допускаются только цифры')
+      setCryptoOrder('')
     }
   }
   
+  const pressEnter = (e) => {
+    if(e.key === 'Enter'){
+      clickByCrypto()
+    }
+  }
+
   React.useEffect(() => {
     dispatch(fetchPortfolioSliceId(idStorage))
   }, [dispatch, idStorage, listBriefcase])
@@ -32,11 +53,12 @@ export const CryptoDetails = () => {
 
   return (
     <div className='crypto-details'>
+      {contextHolder}
       <h1 className='crypto-details__header'><span>{currentCrypto?.symbol}</span>{currentCrypto?.name}</h1>
       <div className='crypto-details__order'>
           <h2 className='crypto-details__sub-header'>Введите количество:</h2>
           <div className="crypto-details__submit">
-            <input type="text" value={cryptoOrder} onChange={(e) => setCryptoOrder(e.target.value)}/>
+            <input onKeyDown={pressEnter} type="text" value={cryptoOrder} onChange={(e) => setCryptoOrder(e.target.value)}/>
             <button onClick={clickByCrypto}>Купить</button>
           </div>
       </div>
@@ -82,7 +104,6 @@ export const CryptoDetails = () => {
         <div className='crupto-details__back'><Link className='crupto-details__link' to={'/'}><button>
         <ArrowLeftOutlined className='crupto-details__arrow-left-outlined' />Назад</button></Link></div>
       </div>
-      {/* <HistoricalDataChart/> */}
     </div>
   )
 }

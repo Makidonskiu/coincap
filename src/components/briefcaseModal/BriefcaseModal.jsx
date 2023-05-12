@@ -1,11 +1,12 @@
 import React from 'react';
+//Antd
 import { Modal, Table } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-
+//Redux
 import { useDispatch, useSelector } from 'react-redux';
-
+import { deleteListBriefcaseTarget, onCancelDelete } from '../redux/Slices/portfolioSlice';
+//Css
 import './BriefcaseModal.css';
-import { deleteListBriefcaseTarget } from '../redux/Slices/portfolioSlice';
 
 export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
   const dispatch = useDispatch()
@@ -52,14 +53,23 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
     },
   ];
 
+  const handleClickOk = () => {
+    setOpenBriefcase(false)
+  }
+  const handleClickCancel = () => {
+    dispatch(onCancelDelete())
+    setOpenBriefcase(false)
+  }
+
   return (
     <Modal
       style={{ padding: 20, alignItems: 'center' }}
       title={false}
       centered
       open={openBriefcase}
-      onOk={() => setOpenBriefcase(false)}
-      onCancel={() => setOpenBriefcase(false)}
+      onOk={handleClickOk}
+      onCancel={handleClickCancel}
+      closable={false}
       width={1000}>
       <div className="briefcase-modal">
         {listBriefcase.length > 0 ? (
@@ -78,7 +88,7 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
             </div>
           </div>
         ) : (
-          <h2 className="briefcase-modal__header">Портфель пустой...</h2>
+          <h2 style={{marginTop: 240}} className="briefcase-modal__header">Портфель пустой...</h2>
         )}
       </div>
     </Modal>
