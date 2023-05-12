@@ -2,7 +2,6 @@ import React from 'react';
 import { Modal, Table } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
-import { formatNumber } from '../../formatNumber/formatNumber';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './BriefcaseModal.css';
@@ -63,9 +62,9 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
       onCancel={() => setOpenBriefcase(false)}
       width={1000}>
       <div className="briefcase-modal">
-        <h2 className="briefcase-modal__header">Портфель</h2>
-        {true ? (
+        {listBriefcase.length > 0 ? (
           <div className="briefcase-modal__table">
+            <h2 className="briefcase-modal__header">Портфель</h2>
             <Table
               style={{ height: '100%', marginBottom: 30 }}
               dataSource={listBriefcase}
@@ -79,7 +78,7 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
             </div>
           </div>
         ) : (
-          'Портфель пустой...'
+          <h2 className="briefcase-modal__header">Портфель пустой...</h2>
         )}
       </div>
     </Modal>

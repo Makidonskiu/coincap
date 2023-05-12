@@ -18,14 +18,12 @@ function App() {
     dispatch(fetchCurrencies());
   }, [dispatch]);
   return (
-    <>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<CryptoTable />} />
           <Route path={'crypto'} element={<CryptoDetails />} />
         </Route>
       </Routes>
-    </>
   );
 }
 
