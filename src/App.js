@@ -9,20 +9,21 @@ import { CryptoDetails } from './components/cryptoDetails/CryptoDetails';
 import { fetchCurrencies } from './components/redux/Slices/cryptocurrenciesSlice';
 // Css
 import './App.css';
+import { Layout } from './components/layout/Layout';
 
 function App() {
   const dispatch = useDispatch();
-  
 
   React.useEffect(() => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
   return (
     <>
-      <Header />
       <Routes>
-        <Route path='/' element={<CryptoTable />} />
-        <Route path={`/crypto`} element={<CryptoDetails />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<CryptoTable />} />
+          <Route path={'crypto'} element={<CryptoDetails />} />
+        </Route>
       </Routes>
     </>
   );

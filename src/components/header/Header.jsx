@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
 import  briefcase  from "../../image/briefcase.svg"
 
 import './Header.css'
@@ -15,7 +16,7 @@ export const Header = () => {
 
   const threePopularcryptocurency = cryptocurency.filter(item => item.rank < 4)
   return (
-        <div className="header">
+            <div className="header">
             <div className="header__popular-cryptocurency">
                 <p className="header__sub-header">Популярные криптовалюты:</p>
                 <div className="header__cryptocurency">

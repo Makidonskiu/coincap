@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './CryptoTable.css';
 import { formatNumber } from '../../formatNumber/formatNumber';
 import { usePagination } from '../paginationHoc/usePagination';
 import plus from '../../image/plus.svg';
@@ -9,20 +8,16 @@ import { Table } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { OrderModal } from '../orderModal/OrderModal';
 
+import './CryptoTable.css';
 
 export const CryptoTable = () => {
+  
   const navigate = useNavigate();
   const currencies = useSelector((state) => state.cryptocurrencies.list);
   const [openOrder, setOpenOrder] = React.useState(false);
-
-
-
   const currentIdStorage = (i) => localStorage.setItem('idStorage', JSON.stringify(i))
-
   const { currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage, goToPage } =
   usePagination(currencies, 10);
-  
-  
 
   const handleClickAdd = (id) => {
     setOpenOrder(true)
