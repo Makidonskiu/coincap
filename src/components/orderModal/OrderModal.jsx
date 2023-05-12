@@ -1,7 +1,6 @@
 import React from 'react'
 //Antd
-import { Modal, Button, message } from 'antd'
-// import { Button, message } from 'antd';
+import { Modal, message } from 'antd'
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPortfolioSliceId, listBriefcaseAdd } from '../redux/Slices/portfolioSlice'
@@ -19,8 +18,6 @@ export const OrderModal = ({openOrder, setOpenOrder}) => {
       messageApi.info('Успешно куплено!');
     };
 
-  
-
     const addCrypto = () => {
       const res = parseFloat(orderCrypto)
 
@@ -36,7 +33,6 @@ export const OrderModal = ({openOrder, setOpenOrder}) => {
     }
 
     const pressEnter =(e) => {
-      console.log(e)
       if(e.key === 'Enter'){
         addCrypto()
       }
@@ -51,6 +47,7 @@ export const OrderModal = ({openOrder, setOpenOrder}) => {
       style={{ padding: 20, alignItems: 'center' }}
       title={false}
       centered
+      closable={false}
       open={openOrder}
       onOk={addCrypto}
       onCancel={() => setOpenOrder(false)}

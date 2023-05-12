@@ -30,7 +30,7 @@ export const CryptoTable = () => {
   
   const handleClickCurrenciesInformation = (i) => {
     currentIdStorage(i)
-    navigate(`/crypto`)    
+    navigate(`crypto`)    
   }
 
   const columns = [
@@ -87,8 +87,6 @@ export const CryptoTable = () => {
   const handleClickPagination = (id) => {
     goToPage(id + 1);
   };
-
-
 
   return (
     <div className="crypto-table">

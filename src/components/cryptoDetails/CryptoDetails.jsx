@@ -26,7 +26,6 @@ export const CryptoDetails = () => {
       messageApi.info('Успешно куплено!');
     };
 
-
   const clickByCrypto = () => {
     const res = parseFloat(cryptoOrder)
     
@@ -47,7 +46,7 @@ export const CryptoDetails = () => {
   }
 
   React.useEffect(() => {
-    dispatch(fetchPortfolioSliceId(idStorage))
+    dispatch(fetchPortfolioSliceId(idStorage)) 
   }, [dispatch, idStorage, listBriefcase])
 
 
@@ -101,7 +100,7 @@ export const CryptoDetails = () => {
             </tr>
           </tbody>
         </table>
-        <div className='crupto-details__back'><Link className='crupto-details__link' to={'/'}><button>
+        <div className='crupto-details__back'><Link className='crupto-details__link' to={'/coincap/'}><button>
         <ArrowLeftOutlined className='crupto-details__arrow-left-outlined' />Назад</button></Link></div>
       </div>
     </div>

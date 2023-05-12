@@ -16,11 +16,12 @@ function App() {
   React.useEffect(() => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
+  
   return (
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route path='/coincap' element={<Layout />}>
           <Route index element={<CryptoTable />} />
-          <Route path={'crypto'} element={<CryptoDetails />} />
+          <Route path={`crypto`} element={<CryptoDetails />} />
         </Route>
       </Routes>
   );
