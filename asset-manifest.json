@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/coincap/static/css/main.55a3b08a.css",
-    "main.js": "/coincap/static/js/main.4b65eacb.js",
+    "main.css": "/coincap/static/css/main.4d6fba1b.css",
+    "main.js": "/coincap/static/js/main.93de8556.js",
     "static/js/787.8cd0aabc.chunk.js": "/coincap/static/js/787.8cd0aabc.chunk.js",
     "static/media/briefcase.svg": "/coincap/static/media/briefcase.530ee214a93653f75d13bbdaec2db891.svg",
     "index.html": "/coincap/index.html",
     "static/media/plus.svg": "/coincap/static/media/plus.cb018f03d15690922ac64b24df3ec74e.svg",
-    "main.55a3b08a.css.map": "/coincap/static/css/main.55a3b08a.css.map",
-    "main.4b65eacb.js.map": "/coincap/static/js/main.4b65eacb.js.map",
+    "main.4d6fba1b.css.map": "/coincap/static/css/main.4d6fba1b.css.map",
+    "main.93de8556.js.map": "/coincap/static/js/main.93de8556.js.map",
     "787.8cd0aabc.chunk.js.map": "/coincap/static/js/787.8cd0aabc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.55a3b08a.css",
-    "static/js/main.4b65eacb.js"
+    "static/css/main.4d6fba1b.css",
+    "static/js/main.93de8556.js"
   ]
 }
