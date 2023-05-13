@@ -11,9 +11,7 @@ import './BriefcaseModal.css';
 export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
   const dispatch = useDispatch()
   const listBriefcase = useSelector((state) => state.portfolio.listBriefcase);
-  const price = listBriefcase.reduce((acc, item) => acc + +item.priceUsd, 0);
-  const quantity = listBriefcase.reduce((acc, item) => acc + +item.quantity, 0);
-  const sumCrypto = price * quantity;
+  const priceSum = listBriefcase.reduce((acc, item) => acc + +item.priceUsd * +item.quantity, 0);
 
   const columns = [
     {
@@ -84,7 +82,7 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
             />
             <div className="briefcase-modal__footer">
               <p>Итого: </p>
-              <p className="briefcase-modal__result">{(+sumCrypto).toFixed(2)} $</p>
+              <p className="briefcase-modal__result">{(+priceSum).toFixed(2)} $</p>
             </div>
           </div>
         ) : (

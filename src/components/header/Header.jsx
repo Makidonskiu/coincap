@@ -14,9 +14,7 @@ export const Header = () => {
   const cryptocurency = useSelector(state => state.cryptocurrencies.list)
   const listBriefcase = useSelector(state => state.portfolio.listBriefcase)
   const [openBriefcase, setOpenBriefcase] = React.useState(false);
-  const price = listBriefcase.reduce((acc, item) => acc + +item.priceUsd, 0);
-  const quantity = listBriefcase.reduce((acc, item) => acc + +item.quantity, 0);
-  const sumCrypto = price * quantity
+  const priceSum = listBriefcase.reduce((acc, item) => acc + +item.priceUsd * +item.quantity, 0);
 
   const handleClickOpenBriefcase = () => {
     dispatch(copiedList())
@@ -41,7 +39,7 @@ export const Header = () => {
                 <img className="header__img-cart" src={briefcase} alt="briefcase" />
                 <div className="header__cart-price">
                     <p className="header__sub-header-cart-price">Итого:</p>
-                    <p>{(+sumCrypto).toFixed(2)}$</p>
+                    <p>{(+priceSum).toFixed(2)}$</p>
                 </div>
             </div>
             <BriefcaseModal threePopularcryptocurency={threePopularcryptocurency} openBriefcase={openBriefcase} setOpenBriefcase={setOpenBriefcase} />
