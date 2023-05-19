@@ -5,33 +5,32 @@ import { Table } from 'antd';
 //Redux
 import { useSelector } from 'react-redux';
 //JS
-import { formatNumber } from '../../formatNumber/formatNumber';
+import { formatNumber } from '../../../formatNumber/formatNumber';
 //Components
-import { usePagination } from '../paginationHoc/usePagination';
-import { OrderModal } from '../orderModal/OrderModal';
+import { usePagination } from '../../paginationHoc/usePagination';
+import { OrderModal } from '../../modals/orderModal/OrderModal';
 //Image
-import plus from '../../image/plus.svg';
+import plus from '../../../image/plus.svg';
 //Css
 import './CryptoTable.css';
 
 export const CryptoTable = () => {
-  
   const navigate = useNavigate();
   const currencies = useSelector((state) => state.cryptocurrencies.list);
   const [openOrder, setOpenOrder] = React.useState(false);
-  const currentIdStorage = (i) => localStorage.setItem('idStorage', JSON.stringify(i))
+  const currentIdStorage = (i) => localStorage.setItem('idStorage', JSON.stringify(i));
   const { currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage, goToPage } =
-  usePagination(currencies, 10);
+    usePagination(currencies, 10);
 
   const handleClickAdd = (id) => {
-    setOpenOrder(true)
-    currentIdStorage(id)
-  }
-  
+    setOpenOrder(true);
+    currentIdStorage(id);
+  };
+
   const handleClickCurrenciesInformation = (i) => {
-    currentIdStorage(i)
-    navigate(`crypto`)    
-  }
+    currentIdStorage(i);
+    navigate(`crypto`);
+  };
 
   const columns = [
     {
@@ -43,7 +42,13 @@ export const CryptoTable = () => {
       title: ' ',
       dataIndex: 'symbol',
       key: 'symbol',
-      render: (text, {id}) => <p onClick={() => handleClickCurrenciesInformation(id)} style={{ color: '#EC0C91', cursor: 'pointer' }}>{text}</p>,
+      render: (text, { id }) => (
+        <p
+          onClick={() => handleClickCurrenciesInformation(id)}
+          style={{ color: '#EC0C91', cursor: 'pointer' }}>
+          {text}
+        </p>
+      ),
     },
     {
       title: 'Name',
@@ -80,7 +85,14 @@ export const CryptoTable = () => {
       title: '',
       dataIndex: '',
       key: 'id',
-      render: ({id}) => <img onClick={()=>handleClickAdd(id)} className="crypto-table__plus" src={plus} alt="add" />,
+      render: ({ id }) => (
+        <img
+          onClick={() => handleClickAdd(id)}
+          className="crypto-table__plus"
+          src={plus}
+          alt="add"
+        />
+      ),
     },
   ];
 
@@ -94,7 +106,7 @@ export const CryptoTable = () => {
         {currentItems.length > 0 && (
           <div>
             <Table rowKey="id" dataSource={currentItems} columns={columns} pagination={false} />
-            <OrderModal openOrder={openOrder} setOpenOrder={setOpenOrder} /> 
+            <OrderModal openOrder={openOrder} setOpenOrder={setOpenOrder} />
           </div>
         )}
       </div>
@@ -105,14 +117,14 @@ export const CryptoTable = () => {
               ? 'crypto-table__pagination-button disable'
               : 'crypto-table__pagination-button'
           }
-          onClick={ goToPreviousPage  }
+          onClick={goToPreviousPage}
           disabled={currentPage === 1}>
           Previous
         </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             className={
-              (currentPage - 1) === index
+              currentPage - 1 === index
                 ? 'crypto-table__pagination-button active'
                 : 'crypto-table__pagination-button'
             }

@@ -5,19 +5,20 @@ import { message } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons';
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPortfolioSliceId, listBriefcaseAdd } from '../redux/Slices/portfolioSlice'
+import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/Slices/portfolioSlice'
+//Components
+import { LineChart } from '../../lineChart/LineChart';
 //JS
-import { formatNumber } from '../../formatNumber/formatNumber';
+import { formatNumber } from '../../../formatNumber/formatNumber';
 //Css
 import "./CryptoDetails.css";
-
-
 
 export const CryptoDetails = () => {
   const dispatch = useDispatch()
   const currentCrypto = useSelector(state => state.portfolio.targetCrypto)
   const listBriefcase = useSelector(state => state.portfolio.listBriefcase)
   const [cryptoOrder, setCryptoOrder] = React.useState('');
+  
   const idStorage = JSON.parse(localStorage.getItem('idStorage'));
 
   const [messageApi, contextHolder] = message.useMessage();
@@ -45,8 +46,8 @@ export const CryptoDetails = () => {
     }
   }
 
-  React.useEffect(() => {
-    dispatch(fetchPortfolioSliceId(idStorage)) 
+React.useEffect(() => {
+  dispatch(fetchPortfolioSliceId(idStorage))
   }, [dispatch, idStorage, listBriefcase])
 
 
@@ -57,7 +58,7 @@ export const CryptoDetails = () => {
       <div className='crypto-details__order'>
           <h2 className='crypto-details__sub-header'>Введите количество:</h2>
           <div className="crypto-details__submit">
-            <input onKeyDown={pressEnter} type="text" value={cryptoOrder} onChange={(e) => setCryptoOrder(e.target.value)}/>
+            <input autoFocus onKeyDown={pressEnter} type="text" value={cryptoOrder} onChange={(e) => setCryptoOrder(e.target.value)}/>
             <button onClick={clickByCrypto}>Купить</button>
           </div>
       </div>
@@ -100,6 +101,9 @@ export const CryptoDetails = () => {
             </tr>
           </tbody>
         </table>
+        <div style={{height: 400, maxWidth: 800, margin: "auto"}} className="crypto-details__graf">
+        <LineChart/>
+        </div>
         <div className='crupto-details__back'><Link className='crupto-details__link' to={'/coincap/'}><button>
         <ArrowLeftOutlined className='crupto-details__arrow-left-outlined' />Назад</button></Link></div>
       </div>

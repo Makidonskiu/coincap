@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { fetchCurrencies } from './components/redux/Slices/cryptocurrenciesSlice';
 // Components
 import { Layout } from './components/layout/Layout';
-import { CryptoTable } from './components/cryptoTable/CryptoTable';
-import { CryptoDetails } from './components/cryptoDetails/CryptoDetails';
+import { CryptoTable } from './components/pages/cryptoTable/CryptoTable';
+import { CryptoDetails } from './components/pages/cryptoDetails/CryptoDetails';
 // Css
 import './App.css';
 

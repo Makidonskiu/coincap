@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { copiedList } from '../redux/Slices/portfolioSlice'
 //Components
-import { BriefcaseModal } from '../briefcaseModal/BriefcaseModal'
+import { BriefcaseModal } from '../modals/briefcaseModal/BriefcaseModal'
 //image
 import  briefcase  from "../../image/briefcase.svg"
 //Css
