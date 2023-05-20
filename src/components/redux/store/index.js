@@ -12,8 +12,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 //Slice
-import cryptocurrenciesReducer from '../Slices/cryptocurrenciesSlice';
-import portfolioReducer from '../Slices/portfolioSlice';
+import cryptocurrenciesReducer from '../slices/cryptocurrenciesSlice';
+import portfolioReducer from '../slices/portfolioSlice';
 
 export const rootReducer = combineReducers({
   cryptocurrencies: cryptocurrenciesReducer,

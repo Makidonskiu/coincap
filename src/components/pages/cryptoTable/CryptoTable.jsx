@@ -29,7 +29,7 @@ export const CryptoTable = () => {
 
   const handleClickCurrenciesInformation = (i) => {
     currentIdStorage(i);
-    navigate(`crypto`);
+    navigate(`crypto/${i}`);
   };
 
   const columns = [

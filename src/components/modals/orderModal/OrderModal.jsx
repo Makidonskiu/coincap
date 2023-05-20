@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal, message } from 'antd';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/Slices/portfolioSlice';
+import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/slices/portfolioSlice';
 //Css
 import './OrderModal.css';
 
@@ -66,6 +66,9 @@ export const OrderModal = ({ openOrder, setOpenOrder }) => {
             value={orderCrypto}
             onChange={(e) => setOrderCrypto(e.target.value)}
           />
+          <p className={`order-modal__error ${isNaN(+orderCrypto) ? 'visible' : ''}`}>
+            Можно вводить только цифры
+          </p>
         </div>
       </div>
     </Modal>

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 export const fetchCurrencies = createAsyncThunk(
     'currencies/fetchCurrencies',
     async function(_, {rejectWithValue}){
@@ -34,9 +35,9 @@ const cryptocurrenciesSlice = createSlice({
             state.error = action.payload;
         })
 
-        .addCase(fetchCurrencies.rejected, (state, {payload}) => {
+        .addCase(fetchCurrencies.rejected, (state, action) => {
             state.status = 'rejected';
-            state.error = payload;
+            state.error = action.error.message;
         })
     }
 });

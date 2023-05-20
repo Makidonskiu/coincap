@@ -13,9 +13,7 @@ export const LineChart = () => {
   useEffect(() => {
     const fetchData = async (id) => {
       try {
-        const response = await axios.get(
-          `https://api.coincap.io/v2/assets/${id}/history?interval=d1`
-        );
+        const response = await axios.get(`https://api.coincap.io/v2/assets/${id}/history?interval=d1`);
         const coinData = response.data.data;
 
         const dates = [];
@@ -26,9 +24,10 @@ export const LineChart = () => {
           prices.push(parseFloat(entry.priceUsd));
         });
 
-        if (chartInstance) {
-          chartInstance.destroy();
-        }
+        // if (chartRef.current) {
+        //   // chartRef.current.destroy();
+        //   console.log(chartRef.current.destroy);
+        // }
 
         const ctx = chartRef.current.getContext("2d");
 

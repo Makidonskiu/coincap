@@ -53,20 +53,19 @@ const portfolioSlice = createSlice({
   },
   extraReducers: (build) => {
     build
-      .addCase(fetchPortfolioSliceId.pending, (state, action) => {
+      .addCase(fetchPortfolioSliceId.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
 
       .addCase(fetchPortfolioSliceId.fulfilled, (state, action) => {
         state.status = 'resolved';
-        // state.error = action.payload;
         state.targetCrypto = action.payload;
       })
 
-      .addCase(fetchPortfolioSliceId.rejected, (state, { payload }) => {
+      .addCase(fetchPortfolioSliceId.rejected, (state, action) => {
         state.status = 'rejected';
-        state.error = payload;
+        state.error = action.error.message;
       });
   },
 });

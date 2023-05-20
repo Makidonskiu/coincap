@@ -4,12 +4,12 @@ import { Modal, Table } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteListBriefcaseTarget, onCancelDelete } from '../../redux/Slices/portfolioSlice';
+import { deleteListBriefcaseTarget, onCancelDelete } from '../../redux/slices/portfolioSlice';
 //Css
 import './BriefcaseModal.css';
 
 export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const listBriefcase = useSelector((state) => state.portfolio.listBriefcase);
   const priceSum = listBriefcase.reduce((acc, item) => acc + +item.priceUsd * +item.quantity, 0);
 
@@ -52,12 +52,12 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
   ];
 
   const handleClickOk = () => {
-    setOpenBriefcase(false)
-  }
+    setOpenBriefcase(false);
+  };
   const handleClickCancel = () => {
-    dispatch(onCancelDelete())
-    setOpenBriefcase(false)
-  }
+    dispatch(onCancelDelete());
+    setOpenBriefcase(false);
+  };
 
   return (
     <Modal
@@ -86,7 +86,9 @@ export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
             </div>
           </div>
         ) : (
-          <h2 style={{marginTop: 240}} className="briefcase-modal__header">Портфель пустой...</h2>
+          <h2 style={{ marginTop: 240 }} className="briefcase-modal__header">
+            Портфель пустой...
+          </h2>
         )}
       </div>
     </Modal>

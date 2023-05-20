@@ -42,8 +42,19 @@
     outline: none;
     border: 1px solid #000;
     border-radius: 8px;
-    margin-bottom: 10px;
+    
     font-size: 16px;
+}
+
+.crypto-details__error{
+    color: red;
+    height: 25px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.visible{
+    opacity: 1;
 }
 
 .crypto-details__submit button{

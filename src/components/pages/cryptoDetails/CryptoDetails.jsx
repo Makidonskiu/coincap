@@ -5,7 +5,8 @@ import { message } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons';
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/Slices/portfolioSlice'
+//Slice
+import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/slices/portfolioSlice'
 //Components
 import { LineChart } from '../../lineChart/LineChart';
 //JS
@@ -59,6 +60,7 @@ React.useEffect(() => {
           <h2 className='crypto-details__sub-header'>Введите количество:</h2>
           <div className="crypto-details__submit">
             <input autoFocus onKeyDown={pressEnter} type="text" value={cryptoOrder} onChange={(e) => setCryptoOrder(e.target.value)}/>
+            <p className={`crypto-details__error ${isNaN(+cryptoOrder)?'visible' :''}`}>Можно вводить только цифры</p>
             <button onClick={clickByCrypto}>Купить</button>
           </div>
       </div>
@@ -104,7 +106,7 @@ React.useEffect(() => {
         <div style={{height: 400, maxWidth: 800, margin: "auto"}} className="crypto-details__graf">
         <LineChart/>
         </div>
-        <div className='crupto-details__back'><Link className='crupto-details__link' to={'/coincap/'}><button>
+        <div className='crupto-details__back'><Link className='crupto-details__link' to={'/coincap'}><button>
         <ArrowLeftOutlined className='crupto-details__arrow-left-outlined' />Назад</button></Link></div>
       </div>
     </div>
