@@ -112,7 +112,7 @@ export const CryptoTable = () => {
       </div>
       <div className="crypto-table__pagination">
         <button
-          className={ `crypto-table__pagination-button hidden ${currentPage === 1 ? 'disable' : ''}`}
+          className={ `crypto-table__pagination-button ${currentPage === 1 ? 'disable' : ''}`}
           onClick={goToPreviousPage}
           disabled={currentPage === 1}>
           Previous
@@ -126,7 +126,7 @@ export const CryptoTable = () => {
           </button>
         ))}
         <button
-          className={`crypto-table__pagination-button hidden ${currentPage === totalPages? 'disable' :''}`}
+          className={`crypto-table__pagination-button ${currentPage === totalPages? 'disable' :''}`}
           onClick={goToNextPage}
           disabled={currentPage === totalPages}>
           Next
