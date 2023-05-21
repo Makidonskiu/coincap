@@ -92,8 +92,8 @@
 }
 
 .crypto-details__graf{
-    margin: "auto";
     width: 100%;
+    padding: 0px 60px;
 }
 
 .crupto-details__back button{

@@ -54,7 +54,7 @@
 
 @media (max-width: 768px) {
     .crypto-table__custom{
-        padding: 16px 2px;
+        padding: 16px 0px;
     }
     .hidden{
         display: none;
