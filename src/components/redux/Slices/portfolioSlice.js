@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
 export const fetchPortfolioSliceId = createAsyncThunk(
   'portfolioId/fetchPortfolioSliceId',
   async function (id, { rejectWithValue }) {
     try {
-      const response = await axios.get(`https://api.coincap.io/v2/assets/${id}`);
+      const response = await axios.get(apiKey+`/${id}`);
       return response.data.data;
     } catch (error) {
       rejectWithValue(error.message);

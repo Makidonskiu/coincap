@@ -20,7 +20,8 @@ export const Header = () => {
     dispatch(copiedList());
     setOpenBriefcase(true);
   };
-
+  const apiKey = process.env.REACT_APP_API_KEY;
+  console.log(typeof apiKey);
 
   const threePopularcryptocurency = cryptocurency.filter((item) => item.rank < 4);
   return (

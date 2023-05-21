@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export const fetchCurrencies = createAsyncThunk(
     'currencies/fetchCurrencies',
     async function(_, {rejectWithValue}){
         try {
-            const response = await axios.get('https://api.coincap.io/v2/assets');
+            const response = await axios.get(apiKey);
             return response.data.data
         } catch (error) {
             rejectWithValue(error.message)

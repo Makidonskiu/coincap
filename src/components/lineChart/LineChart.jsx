@@ -10,10 +10,12 @@ export const LineChart = () => {
   const chartRef = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   useEffect(() => {
     const fetchData = async (id) => {
       try {
-        const response = await axios.get(`https://api.coincap.io/v2/assets/${id}/history?interval=d1`);
+        const response = await axios.get(apiKey+`/${id}/history?interval=d1`);
         const coinData = response.data.data;
 
         const dates = [];

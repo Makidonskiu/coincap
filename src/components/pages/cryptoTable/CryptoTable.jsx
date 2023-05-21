@@ -56,13 +56,13 @@ export const CryptoTable = () => {
       key: 'name',
     },
     {
-      title: 'VWAP(24Hr)',
+      title: 'VWAP (24Hr)',
       dataIndex: 'vwap24Hr',
       key: 'vwap24Hr',
       render: (text) => <p className="">{Number(text).toFixed(2)}$</p>,
     },
     {
-      title: 'Change(24Hr)',
+      title: 'Change (24Hr)',
       dataIndex: 'changePercent24Hr',
       key: 'changePercent24Hr',
       render: (text) => (
@@ -105,40 +105,28 @@ export const CryptoTable = () => {
       <div className="crypto-table__table">
         {currentItems.length > 0 && (
           <div>
-            <Table rowKey="id" dataSource={currentItems} columns={columns} pagination={false} />
+            <Table className='crypto-table__custom' rowKey="id" dataSource={currentItems} columns={columns} pagination={false} />
             <OrderModal openOrder={openOrder} setOpenOrder={setOpenOrder} />
           </div>
         )}
       </div>
       <div className="crypto-table__pagination">
         <button
-          className={
-            currentPage === 1
-              ? 'crypto-table__pagination-button disable'
-              : 'crypto-table__pagination-button'
-          }
+          className={ `crypto-table__pagination-button hidden ${currentPage === 1 ? 'disable' : ''}`}
           onClick={goToPreviousPage}
           disabled={currentPage === 1}>
           Previous
         </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
-            className={
-              currentPage - 1 === index
-                ? 'crypto-table__pagination-button active'
-                : 'crypto-table__pagination-button'
-            }
+            className={`crypto-table__pagination-button ${currentPage - 1 === index? 'active': ''}`}
             key={index}
             onClick={() => handleClickPagination(index)}>
             {index + 1}
           </button>
         ))}
         <button
-          className={
-            currentPage === totalPages
-              ? 'crypto-table__pagination-button disable'
-              : 'crypto-table__pagination-button'
-          }
+          className={`crypto-table__pagination-button hidden ${currentPage === totalPages? 'disable' :''}`}
           onClick={goToNextPage}
           disabled={currentPage === totalPages}>
           Next

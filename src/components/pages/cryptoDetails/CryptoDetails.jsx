@@ -103,7 +103,7 @@ React.useEffect(() => {
             </tr>
           </tbody>
         </table>
-        <div style={{height: 400, maxWidth: 800, margin: "auto"}} className="crypto-details__graf">
+        <div className="crypto-details__graf">
         <LineChart/>
         </div>
         <div className='crupto-details__back'><Link className='crupto-details__link' to={'/coincap'}><button>

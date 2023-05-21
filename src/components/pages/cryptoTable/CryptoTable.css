@@ -52,3 +52,11 @@
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .crypto-table__custom{
+        padding: 16px 2px;
+    }
+    .hidden{
+        display: none;
+    }
+}

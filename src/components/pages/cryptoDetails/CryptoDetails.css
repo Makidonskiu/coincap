@@ -91,6 +91,11 @@
     text-decoration: none;
 }
 
+.crypto-details__graf{
+    margin: "auto";
+    width: 100%;
+}
+
 .crupto-details__back button{
     display: flex;
     padding: 8px 35px;
@@ -109,8 +114,8 @@
     margin-right: 8px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .crupto-details__back button{
         margin-bottom: 20px;
     }
-  }
+}
