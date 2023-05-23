@@ -3,10 +3,11 @@
 Это приложение для отслеживания криптовалют и управления собственным портфелем.
 
 ## Технологии
-React
-Redux
-UI Framework: Ant Design (https://ant.design)
-Стилизация: CSS 
+- React
+- Redux/toolkit
+- Axios
+- UI Framework: Ant Design (https://ant.design)
+- Стилизация: CSS 
 
 ## API
 Для получения данных о криптовалютах мы будем использовать Coincap API (https://docs.coincap.io).
@@ -21,3 +22,5 @@ UI Framework: Ant Design (https://ant.design)
 ## Шапка
 Стоимость трех популярных криптовалют отображается рядом.
 При нажатии на информацию о портфеле открывается модальное окно со списком валют в портфеле и возможностью удалить каждую из них из портфеля.
+
+## Ссылка на роботу https://makidonskiu.github.io/coincap/
