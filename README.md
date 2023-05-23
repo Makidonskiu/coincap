@@ -5,6 +5,8 @@
 ## Технологии
 - React
 - Redux/toolkit
+- Redux-persist
+- React-chartjs-2
 - Axios
 - UI Framework: Ant Design (https://ant.design)
 - Стилизация: CSS 
@@ -23,4 +25,4 @@
 Стоимость трех популярных криптовалют отображается рядом.
 При нажатии на информацию о портфеле открывается модальное окно со списком валют в портфеле и возможностью удалить каждую из них из портфеля.
 
-## Ссылка на роботу https://makidonskiu.github.io/coincap/
+## Deploy https://makidonskiu.github.io/coincap/
