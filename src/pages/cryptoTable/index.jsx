@@ -5,14 +5,14 @@ import { Table } from 'antd';
 //Redux
 import { useSelector } from 'react-redux';
 //JS
-import { formatNumber } from '../../../formatNumber/formatNumber';
+import { formatNumber } from '../../helpers/formatNumber';
 //Components
-import { usePagination } from '../../paginationHoc/usePagination';
-import { OrderModal } from '../../modals/orderModal/OrderModal';
-//Image
-import plus from '../../../image/plus.svg';
+import { usePagination } from '../../HOCs/paginationHoc/usePagination';
+import { OrderModal } from '../../components/modals/orderModal';
 //Css
-import './CryptoTable.css';
+import './index.css';
+
+const imagePath = process.env.PUBLIC_URL + '/image/plus.svg';
 
 export const CryptoTable = () => {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ export const CryptoTable = () => {
   const currentIdStorage = (i) => localStorage.setItem('idStorage', JSON.stringify(i));
   const { currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage, goToPage } =
     usePagination(currencies, 10);
+
 
   const handleClickAdd = (id) => {
     setOpenOrder(true);
@@ -89,7 +90,7 @@ export const CryptoTable = () => {
         <img
           onClick={() => handleClickAdd(id)}
           className="crypto-table__plus"
-          src={plus}
+          src={imagePath}
           alt="add"
         />
       ),

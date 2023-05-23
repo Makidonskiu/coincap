@@ -3,9 +3,9 @@ import React from 'react';
 import { Modal, message } from 'antd';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/slices/portfolioSlice';
+import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../../redux/slices/portfolioSlice';
 //Css
-import './OrderModal.css';
+import './index.css';
 
 export const OrderModal = ({ openOrder, setOpenOrder }) => {
   const dispatch = useDispatch();

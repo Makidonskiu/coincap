@@ -4,9 +4,9 @@ import { Modal, Table } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteListBriefcaseTarget, onCancelDelete } from '../../redux/slices/portfolioSlice';
+import { deleteListBriefcaseTarget, onCancelDelete } from '../../../redux/slices/portfolioSlice';
 //Css
-import './BriefcaseModal.css';
+import './index.css';
 
 export const BriefcaseModal = ({ openBriefcase, setOpenBriefcase }) => {
   const dispatch = useDispatch();

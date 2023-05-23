@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from 'react-redux'
 //Slice
 import { fetchPortfolioSliceId, listBriefcaseAdd } from '../../redux/slices/portfolioSlice'
 //Components
-import { LineChart } from '../../lineChart/LineChart';
+import { LineChart } from '../../components/lineChart/LineChart';
 //JS
-import { formatNumber } from '../../../formatNumber/formatNumber';
+import { formatNumber } from '../../helpers/formatNumber';
 //Css
-import "./CryptoDetails.css";
+import "./index.css";
 
 export const CryptoDetails = () => {
   const dispatch = useDispatch()
